@@ -1,8 +1,17 @@
-// CommonJS, evey file is module (by default)
-// Modules - Encapsulated Code (only share minimum)
+const os = require('os')
 
-const names = require('./4-names')
-const sayHi = require('./5-utils')
-const data = require('./6-alternative-flavor')
-require('./7-mind-granade')
+// info about current user
+const user = os.userInfo()
+console.log(user)
 
+// method return the system uptime in seconds
+console.log(`The System Uptime is ${os.uptime()} seconds`)
+
+const currentOS = {
+    name: os.type(),
+    release: os.release(),
+    totalMem: os.totalmem(),
+    freeMem: os.freemem(),
+}
+
+console.log(currentOS)
