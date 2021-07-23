@@ -1,11 +1,12 @@
-const http = require('http')
+const { createReadStream } = require('fs')
 
-// Using Event Emitter API
-const server = http.createServer()
-// emits request event
-// subcribe to it / listen for it / respond to it
-server.on('request', (req, res) => {
-  res.end('Welcome')
+// default 64kb
+// last buffer - remainder
+// highWaterMark - control size
+// const stream = createReadStream('./content/big.txt', { highWaterMark: 90000 })
+// const stream = createReadStream('../content/big.txt', { encoding: 'utf8' })
+const stream = createReadStream('./content/big.txt')
+
+stream.on('data', (result) => {
+  console.log(result)
 })
-
-server.listen(5000)
